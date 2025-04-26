@@ -16,7 +16,10 @@ export default {
         error: '#ef4444',
         success: '#22c55e',
         warning: '#f59e0b',
-      }
+      },
+      fontFamily: {
+        'permanent-marker': ['Permanent Marker', 'cursive'],
+      },
     },
   },
   plugins: [],
