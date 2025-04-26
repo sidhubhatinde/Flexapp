@@ -22,11 +22,11 @@ function BottomBanner() {
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-20 mx-20 mt-20 justify-evenly">
                     <Link to=''>
-                        <div className='bg-primary text-white p-5 rounded-2xl border-2 border-transparent hover:border-primaryHover h-64 transition-all duration-300'>
+                        <div className='bg-primary text-white hover:bg-white hover:text-primary p-5 rounded-2xl border-2 border-transparent hover:border-primaryHover h-64 transition-all duration-300'>
                         <h3 className='text-5xl font-semibold p-5'>Post a job and hire a pro</h3>
                         <div className='text-4xl p-5 flex justify-between items-center'>
                             <div className='flex justify-start items-center'>
-                            <p>Talent Marketplace<sup>TM</sup></p>
+                            <p>Talent Marketplace<sup className='text-xl'>TM</sup></p>
                             </div>
                             <FaArrowRight className='text-white'/>
                         </div>
@@ -34,11 +34,11 @@ function BottomBanner() {
                     </Link>
 
                     <Link to=''>
-                        <div className='bg-primary text-white p-5 rounded-2xl border-2 border-transparent hover:border-primaryHover h-64 transition-all duration-300'>
+                        <div className='bg-primary text-white hover:bg-white hover:text-primary p-5 rounded-2xl border-2 border-transparent hover:border-primaryHover h-64 transition-all duration-300'>
                         <h3 className='text-5xl font-semibold p-5'>Browse and buy projects</h3>
                         <div className='text-4xl p-5 flex justify-between items-center'>
                             <div className='flex justify-start items-center'>
-                            <p>Project Catalog<sup>TM</sup></p>
+                            <p>Project Catalog<sup className='text-xl'>TM</sup></p>
                             </div>
                             <FaArrowRight className='text-white'/>
                         </div>
@@ -46,11 +46,11 @@ function BottomBanner() {
                     </Link>
 
                     <Link to=''>
-                        <div className='bg-primary text-white p-5 rounded-2xl border-2 border-transparent hover:border-primaryHover h-64 transition-all duration-300'>
+                        <div className='bg-primary text-white hover:bg-white hover:text-primary p-5 rounded-2xl border-2 border-transparent hover:border-primaryHover h-64 transition-all duration-300'>
                         <h3 className='text-5xl font-semibold p-5'>Get advice from industry expert</h3>
                         <div className='text-4xl p-5 flex justify-between items-center'>
                             <div className='flex justify-start items-center'>
-                            <p>Consultations<sup>TM</sup></p>
+                            <p>Consultations</p>
                             </div>
                             <FaArrowRight className='text-white'/>
                         </div>
