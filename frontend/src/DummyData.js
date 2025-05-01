@@ -5,6 +5,7 @@ const posts = [
       postedTime: "2 hours ago",
       location: "Remote",
       type: "Ongoing project",
+      roleType:'Front End Development',
       budget: {
         amount: 45,
         currency: "USD",
@@ -52,6 +53,7 @@ const posts = [
       postedTime: "3 hours ago",
       location: "Remote",
       type: "One-time project",
+      roleType:'Data Science Development',
       budget: {
         amount: 100,
         currency: "USD",
@@ -100,6 +102,7 @@ const posts = [
       postedTime: "5 hours ago",
       location: "On-site",
       type: "Contract",
+      roleType:'Mobile App Deveopment',
       budget: {
         amount: 60,
         currency: "USD",
@@ -147,6 +150,7 @@ const posts = [
       postedTime: "1 day ago",
       location: "Remote",
       type: "Ongoing project",
+      roleType:'Cloud Deployment',
       budget: {
         amount: 50,
         currency: "USD",
