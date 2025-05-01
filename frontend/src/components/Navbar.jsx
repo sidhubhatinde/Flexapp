@@ -9,7 +9,7 @@ function Navbar() {
           <ul className="flex space-x-9 items-center">
             <li className="text-5xl font-bold text-black font-permanent-marker"><Link to=''>Flex Work</Link></li>
             <li className="text-3xl"><Link to=''>Find talent</Link></li>
-            <li className="text-3xl"><Link to=''>Find work</Link></li>
+            <li className="text-3xl"><Link to='/find-work'>Find work</Link></li>
             <li className="text-3xl"><Link to=''>Why Flexwork</Link></li>
             <li className="text-3xl"><Link to=''>What's new</Link></li>
             <li className="text-3xl"><Link to=''>Pricing</Link></li>
