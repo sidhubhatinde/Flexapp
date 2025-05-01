@@ -4,10 +4,10 @@ import { FaArrowRight } from "react-icons/fa";
 
 function BottomBanner() {
     return (
-        <div className='w-full px-20 pt-10 pb-0'>
+        <div className='w-full px-20 pt-10 pb-0 min-h-screen'>
           <div 
             className='bg-[url(https://res.cloudinary.com/upwork-cloud-acquisition-prod/image/upload/c_scale/brontes/delivery-models/find-talent-2x.jpg)] 
-            w-full h-[calc(100vh-100px)] bg-cover bg-center rounded-3xl'>
+            w-full  min-h-screen bg-cover bg-center rounded-3xl'>
                 <div className='w-1/3 pl-10 pt-10'>
                     <p className='text-white text-5xl font-semibold'>For clients</p>
                 </div>
@@ -113,7 +113,7 @@ function BottomBanner() {
                 </div>
                 <div className='bg-primary h-[800px] w-[900px]'>
                     <div className='text-white'>
-                        <h3 class="text-5xl font-semibold mx-40 mt-40"><span>We’re <br/>the world’s work<br/>marketplace</span></h3>
+                        <h3 className="text-5xl font-semibold mx-40 mt-40"><span>We’re <br/>the world’s work<br/>marketplace</span></h3>
 
                         <div className="mx-40 flex flex-col gap-10">
          
@@ -149,15 +149,15 @@ function BottomBanner() {
 
 
                     </div>
-                        <picture className='absolute left-[60%] top-[10%] transform -translate-x-1/2'><source srcset="data:image/gif;base64,R0lGODlhAQABAAAAACwAAAAAAQABAAA=" media="(max-width: 0px)"/>  <img data-v-68b03fc4="" src="https://res.cloudinary.com/upwork-cloud-acquisition-prod/image/upload/c_scale,w_433,h_694,q_auto,dpr_2.0,f_auto/brontes/why-upwork/person-with-headset.png" width="433" height="694" alt="Stretching Person" data-qa="stretching-person-img" class="updated-why-upwork__stretching-person d-none d-md-block" /></picture>
+                        <picture className='absolute left-[60%] top-[10%] transform -translate-x-1/2'><source srcSet="data:image/gif;base64,R0lGODlhAQABAAAAACwAAAAAAQABAAA=" media="(max-width: 0px)"/>  <img data-v-68b03fc4="" src="https://res.cloudinary.com/upwork-cloud-acquisition-prod/image/upload/c_scale,w_433,h_694,q_auto,dpr_2.0,f_auto/brontes/why-upwork/person-with-headset.png" width="433" height="694" alt="Stretching Person" /></picture>
                 </div>
             </div>
 
-            <div className="flex rounded-3xl items-center py-10 w-full h-screen">
-                <div className='w-[45%] h-full'>
-                    <img className='h-full w-full' src="https://res.cloudinary.com/upwork-cloud-acquisition-prod/image/upload//q_auto,dpr_2.0,f_auto/brontes/for-talents/find-great-work@2x.jpg" />
+            <div className="flex rounded-3xl items-center py-10 w-full min-h-screen">
+                <div className='w-[45%] min-h-screen'>
+                    <img className='min-h-screen w-full' src="https://res.cloudinary.com/upwork-cloud-acquisition-prod/image/upload//q_auto,dpr_2.0,f_auto/brontes/for-talents/find-great-work@2x.jpg" />
                 </div>
-                <div className='bg-blue-800 w-[55%] h-full'>
+                <div className='bg-blue-800 w-[55%] min-h-screen'>
                     <div className='pl-10 pt-10'>
                         <p className='text-white text-5xl font-semibold'>For talent</p>
                     </div>
