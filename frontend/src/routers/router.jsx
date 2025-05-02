@@ -3,6 +3,7 @@ import App from "../App";
 import Home from "../pages/home/Home";
 import FindWork from "../pages/findwork/FindWork";
 import JobProposal from "../pages/findwork/JobProposal";
+import FindTalent from "../pages/findtalent/FindTalent";
 
 const router = createBrowserRouter([
     {
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
             {
                 path:'apply-job/:id',
                 element:<JobProposal/>
+            },
+            {
+                path:'/find-talent',
+                element:<FindTalent/>
             },
 
         ]
