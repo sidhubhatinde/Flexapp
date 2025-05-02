@@ -4,10 +4,6 @@ import { useNavigate } from 'react-router-dom';
 const Login = () => {
     const navigate = useNavigate();
 
-    const navigateToSignUp = () => {
-        navigate('signup');
-    }
-
     return (
         <div className="min-h-screen flex items-center justify-center bg-gray-100">
             <form
@@ -47,7 +43,10 @@ const Login = () => {
                 <div className="text-center mt-4">
                     <p className="text-sm text-gray-600">Don't have a FlexWork account?</p>
                     <button
-                        onClick={navigateToSignUp}
+                        onClick={(e) => {
+                            e.preventDefault();
+                            navigate('/signup')
+                        }}
                         className="text-primary font-medium hover:underline focus:outline-none"
                     >
                         Sign up
