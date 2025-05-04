@@ -16,11 +16,26 @@ export default {
         error: '#ef4444',
         success: '#22c55e',
         warning: '#f59e0b',
+        forest: '#228B22',
+        darkforest:'#0f4f1a',
       },
       fontFamily: {
         'permanent-marker': ['Permanent Marker', 'cursive'],
       },
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/line-clamp'),
+    function ({ addComponents }) {
+      addComponents({
+        '.no-scrollbar': {
+          '::-webkit-scrollbar': {
+            display: 'none', 
+          },
+          'scrollbar-width': 'none', 
+          '-ms-overflow-style': 'none',
+        },
+      });
+    },
+  ],
 }

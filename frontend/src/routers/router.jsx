@@ -1,11 +1,17 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
 import Home from "../pages/home/Home";
+<<<<<<< HEAD
 import Login from "../pages/login";
 import Signup from "../pages/Signup";
 
 
 
+=======
+import FindWork from "../pages/findwork/FindWork";
+import JobProposal from "../pages/findwork/JobProposal";
+import FindTalent from "../pages/findtalent/FindTalent";
+>>>>>>> findwork-page
 
 const router = createBrowserRouter([
     {
@@ -18,6 +24,7 @@ const router = createBrowserRouter([
                 element: <Home />
             },
             {
+<<<<<<< HEAD
                 path: 'login',
                 element: <Login />
             },
@@ -25,6 +32,20 @@ const router = createBrowserRouter([
                 path: 'signup',
                 element: <Signup />
             }
+=======
+                path:'/find-work',
+                element:<FindWork/>,
+            },
+            {
+                path:'apply-job/:id',
+                element:<JobProposal/>
+            },
+            {
+                path:'/find-talent',
+                element:<FindTalent/>
+            },
+
+>>>>>>> findwork-page
         ]
     }
 ])
