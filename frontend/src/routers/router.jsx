@@ -5,6 +5,7 @@ import FindWork from "../pages/findwork/FindWork";
 import JobProposal from "../pages/findwork/JobProposal";
 import FindTalent from "../pages/findtalent/FindTalent";
 import JobPost from "../pages/findtalent/JobPost";
+import WhyFlexwork from "../pages/whyflexwork/WhyFlexwork";
 
 const router = createBrowserRouter([
     {
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
             {
                 path:'/post-job',
                 element:<JobPost/>
+            },
+            {
+                path:'/why-flexwork',
+                element:<WhyFlexwork/>
             }
 
         ]
