@@ -1,9 +1,12 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 function BottomBanner() {
+    const navigate = useNavigate();
     function handlePostJobClick(e)
     {
         e.preventDefault()
+        navigate('/post-job');
     }
     let benefits = [
         {
