@@ -1,29 +1,14 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
 import Home from "../pages/home/Home";
-<<<<<<< HEAD
-<<<<<<< HEAD
-import Login from "../pages/login";
-import Signup from "../pages/Signup";
 
-
-
-=======
-=======
-
->>>>>>> why-flexwork
 import FindWork from "../pages/findwork/FindWork";
 import JobProposal from "../pages/findwork/JobProposal";
 import FindTalent from "../pages/findtalent/FindTalent";
-<<<<<<< HEAD
->>>>>>> findwork-page
-=======
 import JobPost from "../pages/findtalent/JobPost";
 import WhyFlexwork from "../pages/whyflexwork/WhyFlexwork";
-<<<<<<< HEAD
->>>>>>> findtalent-page
-=======
->>>>>>> why-flexwork
+import Login from "../pages/login";
+import Signup from "../pages/Signup";
 
 const router = createBrowserRouter([
     {
@@ -36,18 +21,6 @@ const router = createBrowserRouter([
                 element: <Home />
             },
             {
-<<<<<<< HEAD
-<<<<<<< HEAD
-                path: 'login',
-                element: <Login />
-            },
-            {
-                path: 'signup',
-                element: <Signup />
-            }
-=======
-=======
->>>>>>> why-flexwork
                 path:'/find-work',
                 element:<FindWork/>,
             },
@@ -66,12 +39,16 @@ const router = createBrowserRouter([
             {
                 path:'/why-flexwork',
                 element:<WhyFlexwork/>
-            }
+            },
+            {
+                path: '/login',
+                element: <Login />
+            },
+            {
+                path: '/signup',
+                element:  <Signup/>
+            },
 
-<<<<<<< HEAD
->>>>>>> findwork-page
-=======
->>>>>>> why-flexwork
         ]
     }
 ])
