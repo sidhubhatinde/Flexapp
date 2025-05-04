@@ -18,10 +18,10 @@ function Navbar() {
         <div className="flex space-x-11">
           <ul className="flex space-x-9 items-center">
             <li>
-              <Link to='' className="text-3xl hover:text-primaryHover">Log in</Link>
+              <Link to='/login' className="text-3xl hover:text-primaryHover">Log in</Link>
             </li>
             <li>
-              <Link to='' className="text-3xl text-white bg-primary rounded-2xl px-8 py-5 text-blue-600 hover:bg-primaryHover">Sign up</Link>
+              <Link to='' className="text-3xl text-white bg-primary rounded-2xl px-8 py-5 hover:bg-primaryHover">Sign up</Link>
             </li>
           </ul>
         </div>
