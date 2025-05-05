@@ -9,7 +9,7 @@ function App() {
   return (
     <div className="flex flex-col min-h-screen overflow-auto">
       <Navbar/>
-      <Outlet className="flex-grow"/>
+      <Outlet/>
       <Footer/>
 
     </div>

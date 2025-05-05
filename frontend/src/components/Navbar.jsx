@@ -4,7 +4,7 @@ import { CgProfile } from "react-icons/cg";
 
 function Navbar() {
   
-  const isAuthenticated = false;
+  const isAuthenticated = true;
   const user = {
     role:"client"
   }

@@ -1,6 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
-import Home from "../pages/home/Home";
 
 import FindWork from "../pages/findwork/FindWork";
 import JobProposal from "../pages/findwork/JobProposal";
@@ -12,6 +11,10 @@ import Signup from "../pages/Signup";
 import SavedJobs from "../pages/findwork/SavedJobs";
 import FreelancerProposals from "../pages/proposals/FreelancerProposals";
 import ProposalDetails from "../components/ProposalDetails";
+import AllJobPosts from "../pages/findtalent/AllJobPosts";
+import ClientLanding from "../pages/landing/ClientLanding";
+import LandingRouter from "../pages/landing/LandingRouter";
+
 
 const router = createBrowserRouter([
     {
@@ -21,7 +24,7 @@ const router = createBrowserRouter([
             //add other routes here
             {
                 path: '/',
-                element: <Home />
+                element: <LandingRouter />
             },
             {
                 path:'/find-work',
@@ -62,6 +65,10 @@ const router = createBrowserRouter([
             {
                 path:'/proposal-details/:id',
                 element:<ProposalDetails/>
+            },
+            {
+                path:'/all-jobs',
+                element: <AllJobPosts/>
             },
 
         ]
