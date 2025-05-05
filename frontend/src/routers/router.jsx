@@ -10,6 +10,8 @@ import WhyFlexwork from "../pages/whyflexwork/WhyFlexwork";
 import Login from "../pages/login";
 import Signup from "../pages/Signup";
 import SavedJobs from "../pages/findwork/SavedJobs";
+import FreelancerProposals from "../pages/proposals/FreelancerProposals";
+import ProposalDetails from "../components/ProposalDetails";
 
 const router = createBrowserRouter([
     {
@@ -52,7 +54,15 @@ const router = createBrowserRouter([
             {
                 path:'/saved-jobs',
                 element:<SavedJobs/>
-            }
+            },
+            {
+                path:'/freelancer-proposals',
+                element:<FreelancerProposals/>
+            },
+            {
+                path:'/proposal-details/:id',
+                element:<ProposalDetails/>
+            },
 
         ]
     }

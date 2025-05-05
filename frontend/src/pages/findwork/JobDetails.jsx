@@ -3,7 +3,7 @@ import React from 'react'
 function JobDetails({job}) {
 
   return (
-    <div className='border-solid border-black border-2 my-10'>
+    <div className='border-solid border-[#676767] border-2 my-10'>
         <div className='px-20 py-5'>
             <h2 className='text-6xl font-semibold my-12'>Job details</h2>
             <h3 className='text-5xl font-semibold my-12'>{job.title}</h3>

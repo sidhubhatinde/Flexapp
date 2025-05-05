@@ -334,7 +334,7 @@ function JobPost() {
           <button onClick={handlePostJob}  className='bg-primary hover:bg-primaryHover text-white p-6 rounded-lg'>
             Post this job
           </button>
-          <button onClick={handleCancel}  className='bg-white hover:text-primaryHover text-primary p-6 border-2 border-solid border-primary rounded-lg'>
+          <button onClick={handleCancel}  className='bg-white hover:text-primaryHover hover:bg-[#E8F5E9] text-primary p-6 border-2 border-solid border-primary rounded-lg'>
             Cancel
           </button>
         </div>
