@@ -31,6 +31,7 @@ function FindWork() {
   return (
     <div>
         <SwiperSlider/>
+        
         <div className='relative mx-auto my-16 w-11/12 text-3xl flex items-center'>
             <CiSearch className='size-12 absolute mx-7'/>
             <input ref={inputRef} type='text' placeholder='Search for jobs' onChange={handleChange} className='px-24 py-5 border-solid border-black border-2 w-[100%] rounded-2xl'/>

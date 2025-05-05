@@ -9,6 +9,7 @@ import JobPost from "../pages/findtalent/JobPost";
 import WhyFlexwork from "../pages/whyflexwork/WhyFlexwork";
 import Login from "../pages/login";
 import Signup from "../pages/Signup";
+import SavedJobs from "../pages/findwork/SavedJobs";
 
 const router = createBrowserRouter([
     {
@@ -48,6 +49,10 @@ const router = createBrowserRouter([
                 path: '/signup',
                 element:  <Signup/>
             },
+            {
+                path:'/saved-jobs',
+                element:<SavedJobs/>
+            }
 
         ]
     }
