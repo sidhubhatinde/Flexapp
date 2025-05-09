@@ -7,8 +7,9 @@ function LandingRouter() {
 
     const user ={
         name:"Ammar",
-        role:"Client"
+        role:"freelancer"
     }
+    // let user;
 
     if (!user) {
         return <Home />;

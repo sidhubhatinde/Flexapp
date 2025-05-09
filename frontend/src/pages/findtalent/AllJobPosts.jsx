@@ -1,6 +1,6 @@
 import React from 'react'
 import posts from '../../DummyData';
-import SaveJobCard from '../../components/SaveJobCard'
+import PostedJob from '../../components/PostedJob'
 
 function AllJobPosts() {
   const savedJobs = posts;
@@ -10,7 +10,7 @@ function AllJobPosts() {
     <div className='my-12'>
         {
             savedJobs.map((post)=>{
-                return  <SaveJobCard post={post}/>
+                return  <PostedJob post={post}/>
             })
         }
     </div>

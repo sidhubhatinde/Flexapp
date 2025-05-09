@@ -16,7 +16,7 @@ function ClientLanding() {
 
   return (
     <div className='text-3xl'>
-        <div className='flex items-start justify-between py-10 px-20 m-20 border-2 border-[#676767] border-solid'>
+        <div className='flex items-start justify-between py-10 px-20 m-20 border-2 border-[#676767] border-solid rounded-2xl'>
             <div>
                 <p className='text-[#676767] text-2xl'>Get started</p>
                 <h6 className='text-4xl font-semibold my-6'>Get started and connect with talent to get work done</h6>

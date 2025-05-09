@@ -14,6 +14,10 @@ import ProposalDetails from "../components/ProposalDetails";
 import AllJobPosts from "../pages/findtalent/AllJobPosts";
 import ClientLanding from "../pages/landing/ClientLanding";
 import LandingRouter from "../pages/landing/LandingRouter";
+import ClientProposals from "../pages/proposals/ClientProposals";
+import ClientProfile from "../pages/profile/ClientProfile";
+import FreelancerProfile from "../pages/profile/FreelancerProfile";
+import Profile from "../pages/profile/Profile";
 
 
 const router = createBrowserRouter([
@@ -70,6 +74,14 @@ const router = createBrowserRouter([
                 path:'/all-jobs',
                 element: <AllJobPosts/>
             },
+            {
+                path:'/client-proposals',
+                element:<ClientProposals/>
+            },
+            {
+                path:'/profile',
+                element:<Profile/>
+            }
 
         ]
     }
