@@ -1,4 +1,7 @@
+
+
 const posts = [
+
     {
       id: '1',
       title: "Senior Front-End Developer for E-Commerce Site",
@@ -8,7 +11,6 @@ const posts = [
       roleType:'Front End Development',
       budget: {
         amount: 45,
-        currency: "USD",
         paymentType: "Hourly",
         experienceLevel: "Senior"
       },
@@ -26,11 +28,6 @@ const posts = [
         "Experience with Material-UI",
         "Familiar with REST APIs and integrating them",
         "Strong CSS and JavaScript skills"
-      ],
-      deliverables: [
-        "Responsive e-commerce website",
-        "Reusable React components",
-        "Performance optimization reports"
       ],
       skills: [
         "React",
@@ -63,12 +60,6 @@ const posts = [
       estimatedDuration: "1 month",
       workload: "Full-time",
       description: "We need a Python developer with experience in data science to assist in building machine learning models for a recommendation system. The project will involve data cleaning, feature engineering, and model evaluation.",
-      scopeOfWork: [
-        "Build data cleaning and processing scripts",
-        "Implement machine learning models",
-        "Test and evaluate models for accuracy",
-        "Prepare the data for real-time use"
-      ],
       requirements: [
         "3+ years with Python",
         "Experience with machine learning libraries like scikit-learn and TensorFlow",

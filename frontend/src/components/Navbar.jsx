@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 function Navbar() {
   const isAuthenticated = true;
   const user = {
-    role:"freelancer"
+    role:"client"
   }
 
   return (

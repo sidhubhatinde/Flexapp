@@ -7,7 +7,7 @@ function ClientProfile() {
 
     const[industry,setIndustry] = useState("")
     const [showCard, setShowCard] = useState(false);
-    const [billingInfo, setBillingInfo] = useState({
+    const [strokeWidth, setstrokeWidth] = useState({
         name: '',
         cardNumber: '',
         expiryDate: '',
@@ -23,7 +23,7 @@ function ClientProfile() {
         name: "John Doe",
         location: "Lahore",
         balance: "0",
-        billingInfo: {
+        strokeWidth: {
             cardNumber: "5555555555554444",
             expiryDate: "11/27",
             cvv: "456",
@@ -64,7 +64,7 @@ function ClientProfile() {
     
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setBillingInfo((prev) => ({
+        setstrokeWidth((prev) => ({
           ...prev,
           [name]: value,
         }));

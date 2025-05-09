@@ -6,6 +6,7 @@ import posts from '../../DummyData';
 
 function FindWork() {
     const [search,setSearch] = useState("");
+    
     const inputRef = useRef();
 
     function handleChange(e)

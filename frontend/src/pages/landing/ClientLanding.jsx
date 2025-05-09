@@ -4,10 +4,12 @@ import AllJobPosts from '../findtalent/AllJobPosts';
 
 
 function ClientLanding() {
+    
     const user ={
         name:"Ammar",
         role:"Client"
     }
+
     function handlePostJob(e)
     {
         e.preventDefault();

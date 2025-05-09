@@ -7,7 +7,7 @@ function LandingRouter() {
 
     const user ={
         name:"Ammar",
-        role:"freelancer"
+        role:"client"
     }
     // let user;
 

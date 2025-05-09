@@ -2,8 +2,12 @@ import React, { useState } from 'react'
 import { CiSearch } from "react-icons/ci";
 import { RxCross1 } from "react-icons/rx";
 
+// {
+//     location: "Remote",
+//   }
 
 function JobPost() {
+    
     const [skills,setSkills] = useState([]);
     const [scope,setScope] = useState("");
     const [duration, setDuration] = useState("");
@@ -11,12 +15,20 @@ function JobPost() {
     const [isFullTime,setIsFullTime] = useState(false);
     const [rateType,setRateType] = useState("")
     const [cost,setCost] = useState(0.0);
-
+    const [title,setTitle] = useState("");
+    const [roleType,setRoleType]  = useState("");
+    const [hoursPerWeek,setHoursPerWeek] = useState("");
+    const [locatoin,setLocation] = useState("");
 
     const exampleTitles = [
         'Build responsive WordPress site with booking/payment functionality',
         'Graphic designer needed to design ad creative for multiple campaigns',
         'Developer needed to update Android app UI for new OS/device specs'
+    ];
+    const exampleRoleTypes =[
+        'Full Stack Developer – Skilled in both frontend and backend technologies (e.g., React, Node.js, MongoDB).',
+        'UI/UX Designer – Focuses on user interface and experience design using tools like Figma, Adobe XD.',
+        'Data Analyst – Specializes in analyzing datasets and creating reports using tools like Python, Excel, or Power BI.'
     ];
     const descriptionKeypoints = [
         'Clear expectations about your task or deliverables',
@@ -51,6 +63,15 @@ function JobPost() {
     {
         e.preventDefault();
     }
+    function handleTitleChange(e){
+        e.preventDefault();
+        setTitle(e.target.value.trim());
+    }
+    function handleRoleTypeChange(e)
+    {
+        e.preventDefault();
+        setRoleType(e.target.value.trim());
+    }
       
   return (
     <div className='mx-20'>
@@ -61,9 +82,10 @@ function JobPost() {
                     <h3 className='text-6xl font-semibold'>Lets start with a strong title</h3>
                     <p className='text-3xl my-10'>This helps your job post stand out to the right candidates. It’s the first thing they’ll see, so make it count!</p>               
                 </div>
+                <div>
                 <div className='w-5/12 text-3xl'>
-                    <label className='block my-5' htmlFor="title">Write a title for your job post</label>
-                    <input className='border-solid border-black border-2 px-8 py-4 w-full rounded-xl mb-10' type="text" required id='title'/>
+                    <label className='block my-5 font-semibold' htmlFor="title">Write a title for your job post</label>
+                    <input className='border-solid border-black border-2 px-8 py-4 w-full rounded-xl mb-10' type="text" required id='title' onChange={handleTitleChange}/>
                     <ul className='list-disc'>
                         <h6 className='font-semibold my-5'>Example titles</h6>
                         {
@@ -72,6 +94,19 @@ function JobPost() {
                             })
                         }
                     </ul>
+                </div>
+                <div className='w-5/12 text-3xl'>
+                    <label className='block my-5 font-semibold' htmlFor="roletype">Write a role type for your job post</label>
+                    <input className='border-solid border-black border-2 px-8 py-4 w-full rounded-xl mb-10' type="text" required id='roletype' onChange={handleRoleTypeChange}/>
+                    <ul className='list-disc'>
+                        <h6 className='font-semibold my-5'>Example role types</h6>
+                        {
+                            exampleRoleTypes.map((role,index)=>{
+                                return <li className='mx-8 my-2' key={index}>{role}</li>
+                            })
+                        }
+                    </ul>
+                </div>
                 </div>
             </div>
 
@@ -194,6 +229,29 @@ function JobPost() {
                     </div>
                     </div>
 
+
+                    {/* work per week */}
+                    <div className="text-3xl my-10">
+                    <h3 className="font-semibold mb-6">How long will you need work in a week?</h3>
+                    <div className="flex flex-col gap-4">
+                        {["More than 20 hours/week", "More than 30 hours/week", "More than 40 hours/week"].map(option => (
+                        <label key={option} className="flex items-center gap-4">
+                            <input
+                            type="radio"
+                            name="duration"
+                            required  
+                            value={option}
+                            checked={hoursPerWeek === option}
+                            onChange={(e) => setHoursPerWeek(e.target.value)}
+                            className="size-10 accent-primary"
+                            />
+                            <span>{option}</span>
+                        </label>
+                        ))}
+                    </div>
+
+                    </div>
+
                     {/* experience */}
                 
                     <div className="text-3xl my-10">
@@ -252,10 +310,30 @@ function JobPost() {
                             </div>
                         </div>
                     </div>
+
+                        <div className="text-3xl my-10">
+                    <h3 className="font-semibold mb-6">Is this opportunity remote or onsite?</h3>
+                    <div className="flex flex-col gap-4">
+                        {["Remote", "Onsite"].map(option => (
+                        <label key={option} className="flex items-center gap-4">
+                            <input
+                            type="radio"
+                            name="duration"
+                            required  
+                            value={option}
+                            checked={location === option}
+                            onChange={(e) => setLocation(e.target.value)}
+                            className="size-10 accent-primary"
+                            />
+                            <span>{option}</span>
+                        </label>
+                        ))}
+                    </div>
+
+                    </div>
+
                 </div>
             </div>
-
-            
 
             <div className='flex items-start gap-20 my-20 sticky top-10 self-start h-fit'>
                 <div className='w-3/12 '>

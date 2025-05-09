@@ -16,6 +16,10 @@ function FreelancerProfile() {
         name: "John Doe",
         location: "Lahore",
         balance: "0",
+        rating: {
+          value: 4.5,     
+          count: 28  
+        },
         billingInfo: {
           cardNumber: "5555555555554444",
           expiryDate: "11/27",

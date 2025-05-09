@@ -14,6 +14,7 @@ function JobCard({post})
     const containerRef = useRef(null);
     const [canScrollLeft, setCanScrollLeft] = useState(false);
     const [canScrollRight, setCanScrollRight] = useState(false);
+    
     const navigate = useNavigate();
 
     const toggleExpanded = () => {
