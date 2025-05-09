@@ -1,11 +1,11 @@
 import React from 'react'
+import {useSelector} from 'react-redux'
 import FreelancerProfile from './FreelancerProfile';
 import ClientProfile from './ClientProfile';
 
+
 function Profile() {
-  const user = {
-    role:"freelancer"
-  }
+  const user = useSelector((state) => state.user);
   return (
     <>
       {user.role === 'freelancer' ? (

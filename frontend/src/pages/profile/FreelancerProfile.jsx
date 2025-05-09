@@ -1,104 +1,19 @@
 import React,{ useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
 import { GoOrganization } from "react-icons/go";
 import { CiCreditCard1 } from "react-icons/ci";
 import { PiAddressBookLight } from "react-icons/pi";
 import { BiHide,BiShow } from "react-icons/bi";
+import {updateUserField} from "../../redux/userSlice"
 
 function FreelancerProfile() {
 
+      const [showBillingInfo, setShowBillingInfo] = useState(true);
       const [isExpanded,setIsExpanded] = useState(false);
       const [showCard, setShowCard] = useState(false);
-      const [user,setUser] = useState({
-        _id: "ObjectId",
-        email: "johndoe@gmail.com",
-        password: "hashed_pw",
-        role: "client",
-        name: "John Doe",
-        location: "Lahore",
-        balance: "0",
-        rating: {
-          value: 4.5,     
-          count: 28  
-        },
-        billingInfo: {
-          cardNumber: "5555555555554444",
-          expiryDate: "11/27",
-          cvv: "456",
-          billingAddress: "456 Business Road, Karachi"
-        },
-      
-        // Fields specific to freelancer
-        freelancerProfile: {
-          title:"Software Engineer l MERN Stack",
-          skills: ["React", "Node.js"],
-          hourlyRate: 30,
-          experienceLevel: "intermediate",
-          bio: "SOFTWARE ENGINEERING STUDENT \nTo seek an internship that offers professional challenges utilizing my technical skills, excellent time management, and problem-solving abilities. I am passionate about learning new things every day and enhancing my knowledge and experience through practical work in the industry. Eager to contribute to innovative projects while continuously expanding my expertise in a dynamic and collaborative environment.\nPROJECTS\nRace Car Game: I successfully implemented a race car game, utilizing various data structures such as graphs, queues, linked lists, and trees. Additionally, I incorporated algorithms including Depth-First Search (DFS) and Dijkstra's algorithm to enhance the functionality and gameplay experience.",
-          proposals: ["proposalId1", "proposalId2"],
-          
-          workHistory: [
-            {
-              title: "Frontend Developer",
-              company: "ABC Solutions",
-              startDate: "2021-01-01",
-              endDate: "2023-01-01",
-              description: "Built and maintained frontend applications using React."
-            },
-            {
-              title: "Full Stack Developer",
-              company: "XYZ Technologies",
-              startDate: "2019-06-01",
-              endDate: "2020-12-01",
-              description: "Worked on MERN stack projects for clients."
-            }
-          ],
-      
-          education: [
-            {
-              degree: "BS in Software Engineering",
-              institution: "FAST NUCES",
-              startDate: "2015-08-01",
-              endDate: "2019-06-01"
-            }
-          ],
-      
-          languages: [
-            {
-              name: "English",
-              proficiency: "Fluent"
-            },
-            {
-              name: "Urdu",
-              proficiency: "Native"
-            }
-          ],
-      
-          projectsCatalog: [
-            {
-              title: "E-commerce Website",
-              description: "A full-stack MERN app for online shopping.",
-              technologies: ["React", "Node.js", "MongoDB", "Express"],
-            },
-            {
-              title: "Portfolio Website",
-              description: "Personal portfolio with animations and responsive design.",
-              technologies: ["React", "Tailwind CSS"],
-            }
-          ]
-        },
-      
-        // Fields specific to client
-        clientProfile: {
-          companyName: "Tech Innovate",
-          jobsPosted: ["jobId1", "jobId2"],
-          industry: "Tech & IT",
-          companyWebsite: "https://techinnovate.com",
-          description: "Lorem ipsum dolor sit, amet consectetur..."
-        },
-      
-        createdAt: "2024-01-01T00:00:00Z"
-      })
-    
+      const user = useSelector((state) => state.user);
+      const dispatch = useDispatch();
+
       const toggleCardVisibility = () => {
         setShowCard((prev) => !prev);
       };
@@ -106,39 +21,47 @@ function FreelancerProfile() {
     const toggleExpanded = () => {
       setIsExpanded((prev) => !prev);
     };
-    const handleDeleteBillingInfo = () => {
-      setUser(prev => ({
-        ...prev,
-        billingInfo: {
-          cardNumber: "",
-          expiryDate: "",
-          cvv: "",
-          billingAddress: ""
-        }
-      }));
-    };
-        const [billingInfo, setBillingInfo] = useState({
-            name: '',
-            cardNumber: '',
-            expiryDate: '',
-            cvc: '',
-            billingAddress: '',
-          });
-          const handleChange = (e) => {
-            const { name, value } = e.target;
-            setBillingInfo((prev) => ({
-              ...prev,
-              [name]: value,
-            }));
-          };
+      const handleDeleteBillingInfo = (e) => {
+        e.preventDefault();
+        dispatch(updateUserField({
+            path: 'billingInfo.cardNumber',
+            value: ""
+        }));
+        dispatch(updateUserField({
+            path: 'billingInfo.expiryDate',
+            value: ""
+        }));
+        dispatch(updateUserField({
+            path: 'billingInfo.cvc',
+            value: ""
+        }));
+        dispatch(updateUserField({
+            path: 'billingInfo.billingAddress',
+            value: ""
+        }));
+      };
 
+        function isFormComplete() {
+        const isCardNumberValid = user.billingInfo.cardNumber.length === 16;
+        const isNameValid = user.billingInfo.holderName.trim() !== '';
+        const isBillingAddressValid = user.billingInfo.billingAddress.trim() !== '';
+        const isExpiryValid = /^\d{2}\/\d{2}$/.test(user.billingInfo.expiryDate);
+        const isCvcValid = /^\d{3}$/.test(user.billingInfo.cvc);
+        return isCardNumberValid && isNameValid && isExpiryValid && isCvcValid && isBillingAddressValid;
+    }
     const handleSubmit = (e) => {
       e.preventDefault();
-      onSubmit?.(billingInfo);
-      console.log('Billing Info:', billingInfo);
-      // send to backend
+      if(isFormComplete())
+      {
+          setShowBillingInfo(true);
+      }
+      else
+      {
+          alert("Please complete all fields correctly.");
+          setShowBillingInfo(false);
+      }
     };
-
+      console.log(user);
       const isLong = user.freelancerProfile.bio.split(' ').length > 90;
       const maskedCard = user.billingInfo.cardNumber.replace(/\d(?=\d{4})/g, '*');
   return (
@@ -179,7 +102,7 @@ function FreelancerProfile() {
                     <h3 className='text-5xl font-semibold'>Balance: ${user.balance}</h3>
                 </div>
                 {
-                    user.billingInfo.cardNumber!==""?(
+                    showBillingInfo?(
                         <div className='border-2 border-solid border-[#d9d9d9] px-20 py-16 my-12 rounded-3xl'>
                         <h2 className='text-5xl font-semibold my-6'>Your payment address</h2>
             
@@ -211,77 +134,104 @@ function FreelancerProfile() {
                     </div>
                     ):(
                         <div className='border-2 border-solid border-[#d9d9d9] px-20 py-16 my-12 rounded-3xl'>
-                        <form onSubmit={handleSubmit}>
+                        <form>
                             <h2 className="text-5xl font-semibold mb-6">Add Billing Method</h2>
-            
-                            <label className="block mb-6">
-                                Full Name
-                                <input
-                                type="text"
-                                name="name"
-                                value={billingInfo.name}
-                                onChange={handleChange}
-                                className="w-full border px-5 py-4 rounded mt-4"
-                                required
-                                />
-                            </label>
-            
-                            <label className="block mb-6">
-                                Card Number
-                                <input
-                                type="text"
-                                name="cardNumber"
-                                value={billingInfo.cardNumber}
-                                onChange={handleChange}
-                                maxLength="19"
-                                className="w-full border px-5 py-4 rounded mt-4"
-                                required
-                                />
-                            </label>
-            
-                            <div className="flex gap-4 mb-6">
-                                <label className="flex-1">
-                                Expiry Date (MM/YY)
-                                <input
-                                    type="text"
-                                    name="expiryDate"
-                                    value={billingInfo.expiryDate}
-                                    onChange={handleChange}
-                                    placeholder="MM/YY"
-                                    className="w-full border px-5 py-4 rounded mt-4"
-                                    required
-                                />
-                                </label>
-            
-                                <label className="flex-1">
-                                CVC
-                                <input
-                                    type="text"
-                                    name="cvc"
-                                    value={billingInfo.cvc}
-                                    onChange={handleChange}
-                                    maxLength="4"
-                                    className="w-full border px-5 py-4 rounded mt-4"
-                                    required
-                                />
-                                </label>
-                            </div>
-            
-                            <label className="block mb-6">
-                                Billing Address
-                                <input
-                                type="text"
-                                name="billingAddress"
-                                value={billingInfo.billingAddress}
-                                onChange={handleChange}
-                                className="w-full border px-5 py-4 rounded mt-4"
-                                required
-                                />
-                            </label>
-            
-                            <button type="submit" className="bg-blue-600 text-white px-8 py-5 rounded hover:bg-blue-700">
-                                Save Billing Method
-                            </button>
+                    <label className="block mb-6">
+                        Full Name
+                        <input
+                        type="text"
+                        name="name"
+                        value={user.billingInfo.holderName}
+                        onChange={(e)=>{e.preventDefault();
+                            dispatch(updateUserField({
+                                path: 'billingInfo.holderName',
+                                value: e.target.value
+                            }));
+                    }}
+                        className="w-full border px-5 py-4 rounded mt-4"
+                        required
+                        />
+                    </label>
+    
+                    <label className="block mb-6">
+                        Card Number
+                        <input
+                        type="text"
+                        name="cardNumber"
+                        value={user.billingInfo.cardNumber}
+                        onChange={(e)=>{e.preventDefault();
+                                dispatch(updateUserField({
+                                path: 'billingInfo.cardNumber',
+                                value: e.target.value
+                            }));
+                        }}
+                        maxLength="19"
+                        className="w-full border px-5 py-4 rounded mt-4"
+                        required
+                        />
+                    </label>
+    
+                    <div className="flex gap-4 mb-6">
+                        <label className="flex-1">
+                        Expiry Date (MM/YY)
+                        <input
+                            type="text"
+                            name="expiryDate"
+                            value={user.billingInfo.expiryDate}
+                            onChange={(e)=>{
+                                e.preventDefault();
+                                dispatch(updateUserField({
+                                path: 'billingInfo.expiryDate',
+                                value: e.target.value
+                            }));
+                            }}
+                            placeholder="MM/YY"
+                            className="w-full border px-5 py-4 rounded mt-4"
+                            required
+                        />
+                        </label>
+    
+                        <label className="flex-1">
+                        CVC
+                        <input
+                            type="text"
+                            name="cvc"
+                            value={user.billingInfo.cvc}
+                            onChange={(e)=>{
+                                e.preventDefault();
+                                dispatch(updateUserField({
+                                path: 'billingInfo.cvc',
+                                value: e.target.value
+                            }));
+                            }}
+                            maxLength="4"
+                            className="w-full border px-5 py-4 rounded mt-4"
+                            required
+                        />
+                        </label>
+                        <label className="block mb-6">
+                            Billing Address
+                            <input
+                            type="text"
+                            name="billingAddress"
+                            value={user.billingInfo.billingAddress}
+                            onChange={(e)=>{
+                                e.preventDefault();
+                                dispatch(updateUserField({
+                                    path: 'billingInfo.billingAddress',
+                                    value: e.target.value
+                                }));
+                            }}
+                            className="w-full border px-5 py-4 rounded mt-4"
+                            required
+                            />
+                        </label>
+                
+                                <button onClick={handleSubmit} className="bg-blue-600 text-white px-8 py-5 rounded hover:bg-blue-700">
+                                    Save Billing Method
+                                </button>
+                    </div>
+    
                         </form>
                     </div>
                     )

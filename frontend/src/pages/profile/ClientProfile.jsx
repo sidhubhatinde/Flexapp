@@ -1,94 +1,82 @@
 import React, { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
 import { CiCreditCard1 } from "react-icons/ci";
 import { PiAddressBookLight } from "react-icons/pi";
 import { BiHide,BiShow } from "react-icons/bi";
+import {updateUserField} from "../../redux/userSlice"
 
 function ClientProfile() {
 
-    const[industry,setIndustry] = useState("")
+    const [showBillingInfo, setShowBillingInfo] = useState(false);
     const [showCard, setShowCard] = useState(false);
-    const [strokeWidth, setstrokeWidth] = useState({
-        name: '',
-        cardNumber: '',
-        expiryDate: '',
-        cvc: '',
-        billingAddress: '',
-      });
-
-        const [user, setUser] = useState({
-        _id: "ObjectId",
-        email: "johndoe@gmail.com",
-        password: "hashed_pw",
-        role: "client",
-        name: "John Doe",
-        location: "Lahore",
-        balance: "0",
-        strokeWidth: {
-            cardNumber: "5555555555554444",
-            expiryDate: "11/27",
-            cvv: "456",
-            billingAddress: "456 Business Road, Karachi"
-        },
-        freelancerProfile: {
-            skills: ["React", "Node.js"],
-            hourlyRate: 30,
-            experienceLevel: "intermediate",
-            bio: "Experienced web developer...",
-            proposals: ["proposalId1", "proposalId2"]
-        },
-        clientProfile: {
-            companyName: "Tech Innovate",
-            jobsPosted: ["jobId1", "jobId2"],
-            industry: "Tech & IT",
-            companyWebsite: "https://techinnovate.com",
-            description: "Lorem ipsum dolor sit, amet consectetur..."
-        },
-        createdAt: "2024-01-01T00:00:00Z"
-        });
+    const user = useSelector((state) => state.user);
+    const dispatch = useDispatch();
 
 
-    const[description,setDescription] = useState(user.clientProfile.description || "");
     function handleIndustryChange(e)
     {
         e.preventDefault();
-        setIndustry(e.target.value);
+        dispatch(updateUserField({
+            path: 'clientProfile.industry',
+            value: e.target.value
+        }));        
     }
     function handleDescriptionChange(e)
     {
         e.preventDefault();
-        setDescription(e.target.value);
+        dispatch(updateUserField({
+            path: 'clientProfile.description',
+            value: e.target.value
+        }));
     }
     const toggleCardVisibility = () => {
         setShowCard((prev) => !prev);
       };
     
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setstrokeWidth((prev) => ({
-          ...prev,
-          [name]: value,
-        }));
-      };
-    
-      const handleSubmit = (e) => {
+
+      const handleDeleteBillingInfo = (e) => {
         e.preventDefault();
-        onSubmit?.(billingInfo);
-        console.log('Billing Info:', billingInfo);
-        // send to backend
-      };
-      const handleDeleteBillingInfo = () => {
-        setUser(prev => ({
-          ...prev,
-          billingInfo: {
-            cardNumber: "",
-            expiryDate: "",
-            cvv: "",
-            billingAddress: ""
-          }
+        dispatch(updateUserField({
+            path: 'billingInfo.cardNumber',
+            value: ""
+        }));
+        dispatch(updateUserField({
+            path: 'billingInfo.expiryDate',
+            value: ""
+        }));
+        dispatch(updateUserField({
+            path: 'billingInfo.cvc',
+            value: ""
+        }));
+        dispatch(updateUserField({
+            path: 'billingInfo.billingAddress',
+            value: ""
         }));
       };
-      
-      const maskedCard = user.billingInfo.cardNumber.replace(/\d(?=\d{4})/g, '*');
+      console.log(user);
+        function isFormComplete() {
+        const isCardNumberValid = user.billingInfo.cardNumber.length === 16;
+        const isNameValid = user.billingInfo.holderName.trim() !== '';
+        const isBillingAddressValid = user.billingInfo.billingAddress.trim() !== '';
+        const isExpiryValid = /^\d{2}\/\d{2}$/.test(user.billingInfo.expiryDate);
+        const isCvcValid = /^\d{3}$/.test(user.billingInfo.cvc);
+        return isCardNumberValid && isNameValid && isExpiryValid && isCvcValid && isBillingAddressValid;
+    }
+
+        const handleSubmit = (e) => {
+      e.preventDefault();
+      if(isFormComplete())
+      {
+          setShowBillingInfo(true);
+      }
+      else
+      {
+          alert("Please complete all fields correctly.");
+          setShowBillingInfo(false);
+      }
+    };
+
+    const maskedCard = user.billingInfo.cardNumber.replace(/\d(?=\d{4})/g, '*');
   return (
     <div className='text-4xl m-20'>
         <h2 className='text-5xl font-semibold my-6'>My Info</h2>
@@ -150,7 +138,7 @@ function ClientProfile() {
                     </select>
                     <br/> 
                     <label htmlFor="description" >Description</label>
-                    <textarea value={description} onChange={handleDescriptionChange} name="description" id="description" className='rounded-3xl w-full h-80 border-2 border-black border-solid my-6 p-3'>
+                    <textarea value={user.clientProfile.description} onChange={handleDescriptionChange} name="description" id="description" className='rounded-3xl w-full h-80 border-2 border-black border-solid my-6 p-3'>
 
                     </textarea>
                 </div>
@@ -160,7 +148,7 @@ function ClientProfile() {
             <h3 className='text-5xl font-semibold'>Balance: ${user.balance}</h3>
         </div>
         {
-            user.billingInfo.cardNumber!==""?(
+            showBillingInfo ?(
                 <div className='border-2 border-solid border-[#d9d9d9] px-20 py-16 my-12 rounded-3xl'>
                 <h2 className='text-5xl font-semibold my-6'>Your payment address</h2>
     
@@ -200,8 +188,13 @@ function ClientProfile() {
                         <input
                         type="text"
                         name="name"
-                        value={billingInfo.name}
-                        onChange={handleChange}
+                        value={user.billingInfo.holderName}
+                        onChange={(e)=>{e.preventDefault();
+                            dispatch(updateUserField({
+                                path: 'billingInfo.holderName',
+                                value: e.target.value
+                            }));
+                    }}
                         className="w-full border px-5 py-4 rounded mt-4"
                         required
                         />
@@ -212,9 +205,14 @@ function ClientProfile() {
                         <input
                         type="text"
                         name="cardNumber"
-                        value={billingInfo.cardNumber}
-                        onChange={handleChange}
-                        maxLength="19"
+                        value={user.billingInfo.cardNumber}
+                        onChange={(e)=>{e.preventDefault();
+                                dispatch(updateUserField({
+                                path: 'billingInfo.cardNumber',
+                                value: e.target.value
+                            }));
+                        }}
+                        maxLength="16"
                         className="w-full border px-5 py-4 rounded mt-4"
                         required
                         />
@@ -226,8 +224,14 @@ function ClientProfile() {
                         <input
                             type="text"
                             name="expiryDate"
-                            value={billingInfo.expiryDate}
-                            onChange={handleChange}
+                            value={user.billingInfo.expiryDate}
+                            onChange={(e)=>{
+                                e.preventDefault();
+                                dispatch(updateUserField({
+                                path: 'billingInfo.expiryDate',
+                                value: e.target.value
+                            }));
+                            }}
                             placeholder="MM/YY"
                             className="w-full border px-5 py-4 rounded mt-4"
                             required
@@ -239,8 +243,14 @@ function ClientProfile() {
                         <input
                             type="text"
                             name="cvc"
-                            value={billingInfo.cvc}
-                            onChange={handleChange}
+                            value={user.billingInfo.cvc}
+                            onChange={(e)=>{
+                                e.preventDefault();
+                                dispatch(updateUserField({
+                                path: 'billingInfo.cvc',
+                                value: e.target.value
+                            }));
+                            }}
                             maxLength="4"
                             className="w-full border px-5 py-4 rounded mt-4"
                             required
@@ -253,8 +263,14 @@ function ClientProfile() {
                         <input
                         type="text"
                         name="billingAddress"
-                        value={billingInfo.billingAddress}
-                        onChange={handleChange}
+                        value={user.billingInfo.billingAddress}
+                        onChange={(e)=>{
+                            e.preventDefault();
+                            dispatch(updateUserField({
+                                path: 'billingInfo.billingAddress',
+                                value: e.target.value
+                            }));
+                        }}
                         className="w-full border px-5 py-4 rounded mt-4"
                         required
                         />

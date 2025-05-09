@@ -2,9 +2,6 @@ import React, { useState } from 'react'
 import { CiSearch } from "react-icons/ci";
 import { RxCross1 } from "react-icons/rx";
 
-// {
-//     location: "Remote",
-//   }
 
 function JobPost() {
     

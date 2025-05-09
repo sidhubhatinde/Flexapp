@@ -1,11 +1,10 @@
 import React from 'react'
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom'
 
 function Navbar() {
   const isAuthenticated = true;
-  const user = {
-    role:"client"
-  }
+    const user = useSelector((state) => state.user);
 
   return (
     <nav className="bg-white shadow-md py-8 px-10">
