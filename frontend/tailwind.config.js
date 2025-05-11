@@ -6,7 +6,7 @@ export default {
   ],
   theme: {
     extend: {
-      colors:{
+      colors: {
         primary: '#108a00',
         primaryHover: '#0c6c00',
         textPrimary: '#1f2937',
@@ -17,7 +17,7 @@ export default {
         success: '#22c55e',
         warning: '#f59e0b',
         forest: '#228B22',
-        darkforest:'#0f4f1a',
+        darkforest: '#0f4f1a',
       },
       fontFamily: {
         'permanent-marker': ['Permanent Marker', 'cursive'],
@@ -30,9 +30,9 @@ export default {
       addComponents({
         '.no-scrollbar': {
           '::-webkit-scrollbar': {
-            display: 'none', 
+            display: 'none',
           },
-          'scrollbar-width': 'none', 
+          'scrollbar-width': 'none',
           '-ms-overflow-style': 'none',
         },
       });

@@ -27,7 +27,7 @@ const getJobById = async (req, res) => {
 const createJob = async (req, res) => {
     try{
         const job = new Job(req.body);
-        const createdJob = await job.save();
+        const createdJob = await Job.save();
         res.status(201).json(createdJob);
     } catch (error) {
         res.status(500).json({message:error.message})
