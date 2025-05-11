@@ -8,9 +8,9 @@ function App() {
 
   return (
     <div className="flex flex-col min-h-screen overflow-auto">
-      <Navbar/>
-      <Outlet/>
-      <Footer/>
+      <Navbar />
+      <Outlet />
+      <Footer />
 
     </div>
   )

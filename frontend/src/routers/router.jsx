@@ -6,8 +6,8 @@ import JobProposal from "../pages/findwork/JobProposal";
 import FindTalent from "../pages/findtalent/FindTalent";
 import JobPost from "../pages/findtalent/JobPost";
 import WhyFlexwork from "../pages/whyflexwork/WhyFlexwork";
-import Login from "../pages/login";
-import Signup from "../pages/Signup";
+import Login from "../pages/signupLogin/login";
+import Signup from "../pages/signupLogin/SignUserType";
 import SavedJobs from "../pages/findwork/SavedJobs";
 import FreelancerProposals from "../pages/proposals/FreelancerProposals";
 import ProposalDetails from "../components/ProposalDetails";
@@ -18,7 +18,8 @@ import ClientProposals from "../pages/proposals/ClientProposals";
 import ClientProfile from "../pages/profile/ClientProfile";
 import FreelancerProfile from "../pages/profile/FreelancerProfile";
 import Profile from "../pages/profile/Profile";
-
+import SignupForm from '../pages/signupLogin/SignupForm'
+import ClientAdminDashboard from "../pages/ClientAdminDashborad/ClientAdminDashboard";
 
 const router = createBrowserRouter([
     {
@@ -31,24 +32,24 @@ const router = createBrowserRouter([
                 element: <LandingRouter />
             },
             {
-                path:'/find-work',
-                element:<FindWork/>,
+                path: '/find-work',
+                element: <FindWork />,
             },
             {
-                path:'apply-job/:id',
-                element:<JobProposal/>
+                path: 'apply-job/:id',
+                element: <JobProposal />
             },
             {
-                path:'/find-talent',
-                element:<FindTalent/>
+                path: '/find-talent',
+                element: <FindTalent />
             },
             {
-                path:'/post-job',
-                element:<JobPost/>
+                path: '/post-job',
+                element: <JobPost />
             },
             {
-                path:'/why-flexwork',
-                element:<WhyFlexwork/>
+                path: '/why-flexwork',
+                element: <WhyFlexwork />
             },
             {
                 path: '/login',
@@ -56,31 +57,39 @@ const router = createBrowserRouter([
             },
             {
                 path: '/signup',
-                element:  <Signup/>
+                element: <Signup />
             },
             {
-                path:'/saved-jobs',
-                element:<SavedJobs/>
+                path: '/signup/:userType',
+                element: <SignupForm />
             },
             {
-                path:'/freelancer-proposals',
-                element:<FreelancerProposals/>
+                path: '/saved-jobs',
+                element: <SavedJobs />
             },
             {
-                path:'/proposal-details/:id',
-                element:<ProposalDetails/>
+                path: '/freelancer-proposals',
+                element: <FreelancerProposals />
             },
             {
-                path:'/all-jobs',
-                element: <AllJobPosts/>
+                path: '/proposal-details/:id',
+                element: <ProposalDetails />
             },
             {
-                path:'/client-proposals',
-                element:<ClientProposals/>
+                path: '/all-jobs',
+                element: <AllJobPosts />
             },
             {
-                path:'/profile',
-                element:<Profile/>
+                path: '/client-proposals',
+                element: <ClientProposals />
+            },
+            {
+                path: '/profile',
+                element: <Profile />
+            },
+            {
+                path: '/client/dashboard',
+                element: <ClientAdminDashboard />
             }
 
         ]
