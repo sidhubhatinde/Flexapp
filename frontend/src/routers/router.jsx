@@ -19,6 +19,8 @@ import ClientProfile from "../pages/profile/ClientProfile";
 import FreelancerProfile from "../pages/profile/FreelancerProfile";
 import Profile from "../pages/profile/Profile";
 import SignupForm from '../pages/signupLogin/SignupForm'
+import ClientAdminDashboard from "../pages/ClientAdminDashborad/ClientAdminDashboard";
+
 const router = createBrowserRouter([
     {
         path: '/',
@@ -84,6 +86,10 @@ const router = createBrowserRouter([
             {
                 path: '/profile',
                 element: <Profile />
+            },
+            {
+                path: '/client/dashboard',
+                element: <ClientAdminDashboard />
             }
 
         ]
