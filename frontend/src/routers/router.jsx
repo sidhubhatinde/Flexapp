@@ -19,7 +19,10 @@ import ClientProfile from "../pages/profile/ClientProfile";
 import FreelancerProfile from "../pages/profile/FreelancerProfile";
 import Profile from "../pages/profile/Profile";
 import SignupForm from '../pages/signupLogin/SignupForm'
-import ClientAdminDashboard from "../pages/ClientAdminDashborad/ClientAdminDashboard";
+import AdminDashboard from "../pages/Admin/AdminDashboard";
+import AdminNav from '../pages/Admin/AdminNav';
+import { Navigate } from 'react-router-dom';
+import AdminRoute from './AdminRoute';
 
 const router = createBrowserRouter([
     {
@@ -88,8 +91,20 @@ const router = createBrowserRouter([
                 element: <Profile />
             },
             {
-                path: '/client/dashboard',
-                element: <ClientAdminDashboard />
+                path: '/admin/dashboard',
+                element: <AdminRoute element={<AdminDashboard />} />
+            },
+            {
+                path: '/admin/clients',
+                element: <AdminRoute element={<AdminDashboard section="clients" />} />
+            },
+            {
+                path: '/admin/freelancers',
+                element: <AdminRoute element={<AdminDashboard section="freelancers" />} />
+            },
+            {
+                path: '/admin/jobs',
+                element: <AdminRoute element={<AdminDashboard section="jobs" />} />
             }
 
         ]
