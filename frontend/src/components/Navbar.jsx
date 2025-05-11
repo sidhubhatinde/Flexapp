@@ -1,14 +1,19 @@
 import React from 'react'
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom'
+import { resetUser } from '../redux/userSlice';
 
 function Navbar() {
-  const isAuthenticated = false;
   const user = useSelector((state) => state.user);
+  const dispatch = useDispatch();
+
+  const handleLogOut = () => {
+    dispatch(resetUser());
+  }
 
   return (
     <nav className="bg-white shadow-md py-8 px-10">
-      {isAuthenticated ? (
+      {user.role !== null ? (
         user.role === 'client' ? (<div className="flex justify-between items-center">
           <div className="flex items-center space-x-11">
             <ul className="flex space-x-9 items-center">
@@ -22,7 +27,7 @@ function Navbar() {
           <div className="flex space-x-11">
             <ul className="flex space-x-9 items-center">
               <li>
-                <Link to='' className="text-3xl text-white bg-primary rounded-2xl px-8 py-5 hover:bg-primaryHover">Log out</Link>
+                <button onClick={handleLogOut} className="text-3xl text-white bg-primary rounded-2xl px-8 py-5 hover:bg-primaryHover">Log out</button>
               </li>
               <li>
                 <Link to='/profile'>
